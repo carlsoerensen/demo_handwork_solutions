@@ -1,92 +1,159 @@
-import { Brain, Lightbulb } from "lucide-react";
+'use client';
+
+import { useState } from 'react';
+import { MessageCircle, Monitor, Smartphone, User, Users, Zap } from 'lucide-react';
 import ChatBot from "@/components/ChatBot";
+import IntegratedChat from "@/components/IntegratedChat";
+import InternalAI from "@/components/InternalAI";
+import Footer from "@/components/Footer";
+import Link from 'next/link';
 
 export default function Home() {
+  const [aiType, setAiType] = useState<'customer' | 'internal'>('customer');
+  const [viewMode, setViewMode] = useState<'integrated' | 'popup'>('integrated');
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-purple-700">
+    <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-white shadow-sm border-b sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <div className="relative">
-                <Brain className="h-8 w-8 text-blue-600" />
-                <Lightbulb className="h-4 w-4 text-yellow-500 absolute -top-1 -right-1" />
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                <div className="w-5 h-5 bg-white rounded-sm flex items-center justify-center">
+                  <div className="w-2 h-2 bg-blue-600 rounded-sm"></div>
+                </div>
               </div>
-              <span className="text-xl font-bold text-gray-900">Håndværker AI</span>
+              <div>
+                <h1 className="text-lg font-bold text-gray-900">Tømrer & Snedkerfirmaet Carl Sørensen</h1>
+                <p className="text-xs text-gray-500">
+                  {aiType === 'customer' ? 'AI Kundesupport' : 'Intern AI Agent'}
+                </p>
+              </div>
             </div>
 
             {/* Navigation */}
-            <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Hjem</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Om os</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Kontakt</a>
-            </nav>
+            <div className="flex items-center space-x-6">
+              {/* Main Navigation */}
+              <div className="flex items-center space-x-3">
+                <Link 
+                  href="/automatisering"
+                  className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200"
+                >
+                  <Zap className="w-4 h-4" />
+                  <span>Automatisering</span>
+                </Link>
+              </div>
 
-            {/* CTA Button */}
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-              Få AI-Værktøjer
-            </button>
+              {/* Divider */}
+              <div className="h-6 w-px bg-gray-300"></div>
+
+              {/* AI Type Toggle */}
+              <div className="flex bg-gray-100 rounded-lg p-1">
+                <button
+                  onClick={() => setAiType('customer')}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                    aiType === 'customer'
+                      ? 'bg-white text-blue-600 shadow-sm border border-blue-200'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  <Users className="w-4 h-4" />
+                  <span>AI Agent til hjemmeside</span>
+                </button>
+                <button
+                  onClick={() => setAiType('internal')}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                    aiType === 'internal'
+                      ? 'bg-white text-blue-600 shadow-sm border border-blue-200'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  <User className="w-4 h-4" />
+                  <span>Intern AI Agent</span>
+                </button>
+              </div>
+
+              {/* View Mode Toggle - Only show for customer AI */}
+              {aiType === 'customer' && (
+                <>
+                  <div className="h-6 w-px bg-gray-300"></div>
+                  <div className="flex bg-gray-100 rounded-lg p-1">
+                    <button
+                      onClick={() => setViewMode('integrated')}
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                        viewMode === 'integrated'
+                          ? 'bg-white text-blue-600 shadow-sm border border-blue-200'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      }`}
+                    >
+                      <Monitor className="w-4 h-4" />
+                      <span>Integreret</span>
+                    </button>
+                    <button
+                      onClick={() => setViewMode('popup')}
+                      className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                        viewMode === 'popup'
+                          ? 'bg-white text-blue-600 shadow-sm border border-blue-200'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      }`}
+                    >
+                      <Smartphone className="w-4 h-4" />
+                      <span>Popup Widget</span>
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-4 py-12">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-            AI til Håndværkere
-          </h1>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-            Din Digitale Værktøjskasse
-          </h2>
-        </div>
-
-        {/* Description Box */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-8 md:p-12 text-center">
-            <p className="text-white text-lg md:text-xl leading-relaxed">
-              Forestil dig: Du vågner op til en dag, hvor alle dine tilbud er lavet, kunderne er booket, 
-              e-mails er besvaret og din kalender er perfekt planlagt - alt sammen mens du sov. 
-              Dette er ikke en drøm, det er din nye virkelighed med AI-værktøjer, der arbejder for dig 24/7.
-            </p>
-          </div>
-        </div>
-
-        {/* CTA Button */}
-        <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">
-          Bliv Kontaktet
-        </button>
-
-        {/* Second CTA Section */}
-        <div className="max-w-4xl mx-auto mt-20">
-          <div className="bg-gradient-to-r from-blue-500 to-blue-700 rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Klar til at komme i gang?
-            </h3>
-            <p className="text-white text-lg md:text-xl mb-8 leading-relaxed">
-              Vi tager et uforpligtende møde med dig, analyserer din forretning og viser dig de konkrete muligheder med AI.
-            </p>
-            <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg">
-              Få Din Gratis Analyse
-            </button>
-          </div>
-        </div>
-
-        {/* Digital Toolbox Section */}
-        <div className="max-w-4xl mx-auto mt-16 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
-            Din Digitale Værktøjskasse
-          </h2>
-        </div>
-
-        {/* ChatBot Component */}
-        <div className="fixed bottom-6 right-6 z-50">
-          <ChatBot />
-        </div>
+      <main className="flex-1">
+        {aiType === 'customer' ? (
+          // Customer AI (Website AI Agent)
+          viewMode === 'integrated' ? (
+            <IntegratedChat />
+          ) : (
+            <div className="min-h-[calc(100vh-80px)] flex items-center justify-center p-4">
+              <div className="text-center max-w-2xl">
+                <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <MessageCircle className="w-10 h-10 text-white" />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                  AI Kundesupport Widget
+                </h2>
+                <p className="text-lg text-gray-600 mb-8">
+                  Se vores AI-assistent i aktion som en popup widget. Perfekt til kundesupport
+                  og at hjælpe potentielle kunder med deres tømrerprojekter.
+                </p>
+                <div className="bg-white rounded-lg shadow-lg p-6 border">
+                  <div className="flex items-center justify-center space-x-4 mb-4">
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  </div>
+                  <p className="text-gray-500 text-sm">
+                    Popup widget er aktiv i hjørnet →
+                  </p>
+                </div>
+              </div>
+              
+              {/* Popup ChatBot */}
+              <div className="fixed bottom-6 right-6 z-50">
+                <ChatBot />
+              </div>
+            </div>
+          )
+        ) : (
+          // Internal AI Agent
+          <InternalAI />
+        )}
       </main>
+
+      <Footer />
     </div>
   );
 }
