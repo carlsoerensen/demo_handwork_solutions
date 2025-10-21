@@ -110,42 +110,42 @@ export default function IntegratedChat() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] bg-gray-50 flex items-center justify-center p-2">
+    <div className="min-h-[calc(100vh-80px)] bg-gray-50 flex items-center justify-center p-2 md:p-4">
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden chat-container">
         {/* Header */}
-        <div className="bg-blue-600 text-white p-3">
+        <div className="bg-blue-600 text-white p-3 md:p-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                <div className="w-4 h-4 bg-blue-600 rounded-sm flex items-center justify-center">
-                  <div className="w-2 h-2 bg-white rounded-sm"></div>
+            <div className="flex items-center space-x-2 md:space-x-3">
+              <div className="w-5 h-5 md:w-6 md:h-6 bg-white rounded-full flex items-center justify-center">
+                <div className="w-3 h-3 md:w-4 md:h-4 bg-blue-600 rounded-sm flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-sm"></div>
                 </div>
               </div>
-              <div>
-                <h2 className="text-base font-bold">Tømrer & Snedkerfirmaet Carl Sørensen</h2>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-sm md:text-base font-bold truncate">Tømrer & Snedkerfirmaet Carl Sørensen</h2>
                 <p className="text-blue-100 text-xs">AI Kundesupport</p>
               </div>
             </div>
             <button
               onClick={handleRefresh}
-              className="p-1.5 hover:bg-blue-700 rounded-lg transition-colors"
+              className="p-1.5 md:p-2 hover:bg-blue-700 rounded-lg transition-colors flex-shrink-0"
             >
-              <RotateCcw className="w-3 h-3" />
+              <RotateCcw className="w-3 h-3 md:w-4 md:h-4" />
             </button>
           </div>
         </div>
 
         {/* Chat Interface */}
-        <div className="flex flex-col h-[450px]">
+        <div className="flex flex-col h-[400px] md:h-[450px]">
           {/* Messages Area */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-2">
+          <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3">
             {messages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-xs lg:max-w-md px-4 py-3 rounded-lg ${
+                  className={`max-w-[85%] sm:max-w-xs lg:max-w-md px-3 md:px-4 py-2 md:py-3 rounded-lg ${
                     message.role === 'user'
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-100 text-gray-800'
@@ -164,7 +164,7 @@ export default function IntegratedChat() {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 text-gray-800 px-4 py-3 rounded-lg">
+                <div className="bg-gray-100 text-gray-800 px-3 md:px-4 py-2 md:py-3 rounded-lg">
                   <div className="flex items-center space-x-2">
                     <div className="flex space-x-1">
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
@@ -179,26 +179,26 @@ export default function IntegratedChat() {
             <div ref={messagesEndRef} />
           </div>
 
-              {/* Input Area */}
-              <div className="p-3 border-t bg-gray-50">
-                <form onSubmit={handleSubmit} className="flex space-x-2">
-                  <input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Skriv din besked..."
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500 text-sm"
-                    disabled={isLoading}
-                  />
-                  <button
-                    type="submit"
-                    disabled={isLoading || !input.trim()}
-                    className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                  >
-                    <Send className="w-4 h-4" />
-                  </button>
-                </form>
-              </div>
+          {/* Input Area */}
+          <div className="p-3 md:p-4 border-t bg-gray-50">
+            <form onSubmit={handleSubmit} className="flex space-x-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Skriv din besked..."
+                className="flex-1 px-3 py-2 md:py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500 text-sm"
+                disabled={isLoading}
+              />
+              <button
+                type="submit"
+                disabled={isLoading || !input.trim()}
+                className="bg-blue-600 text-white p-2 md:p-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex-shrink-0"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

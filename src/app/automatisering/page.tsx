@@ -143,9 +143,9 @@ export default function AutomatiseringPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
           {/* Navigation */}
-          <div className="mb-6">
+          <div className="mb-4 md:mb-6">
             <Link 
               href="/"
               className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium transition-colors text-sm"
@@ -156,10 +156,10 @@ export default function AutomatiseringPage() {
           </div>
           
           <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 md:mb-3">
               AI Automatisering til Tømrere
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
               Se hvordan AI kan automatisere din daglige administration og 
               give dig mere tid til det, du elsker - at bygge og skabe.
             </p>
@@ -168,42 +168,42 @@ export default function AutomatiseringPage() {
       </div>
 
       {/* Value Proposition */}
-      <div className="bg-blue-600 text-white py-12">
+      <div className="bg-blue-600 text-white py-8 md:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold mb-2">Hvad kan AI automatisering gøre for dig?</h2>
-            <p className="text-blue-100">Konkrete resultater fra andre tømrere</p>
+          <div className="text-center mb-6 md:mb-8">
+            <h2 className="text-xl md:text-2xl font-bold mb-2">Hvad kan AI automatisering gøre for dig?</h2>
+            <p className="text-blue-100 text-sm md:text-base">Konkrete resultater fra andre tømrere</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 text-center">
-            <div className="bg-blue-700 bg-opacity-50 p-6 rounded-lg">
-              <div className="text-3xl font-bold mb-2">80+</div>
-              <div className="text-blue-100 text-sm">Timer sparet per måned</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 text-center">
+            <div className="bg-blue-700 bg-opacity-50 p-4 md:p-6 rounded-lg">
+              <div className="text-2xl md:text-3xl font-bold mb-2">80+</div>
+              <div className="text-blue-100 text-xs md:text-sm">Timer sparet per måned</div>
             </div>
-            <div className="bg-blue-700 bg-opacity-50 p-6 rounded-lg">
-              <div className="text-3xl font-bold mb-2">+40%</div>
-              <div className="text-blue-100 text-sm">Flere kunder</div>
+            <div className="bg-blue-700 bg-opacity-50 p-4 md:p-6 rounded-lg">
+              <div className="text-2xl md:text-3xl font-bold mb-2">+40%</div>
+              <div className="text-blue-100 text-xs md:text-sm">Flere kunder</div>
             </div>
-            <div className="bg-blue-700 bg-opacity-50 p-6 rounded-lg">
-              <div className="text-3xl font-bold mb-2">+60%</div>
-              <div className="text-blue-100 text-sm">Højere omsætning</div>
+            <div className="bg-blue-700 bg-opacity-50 p-4 md:p-6 rounded-lg">
+              <div className="text-2xl md:text-3xl font-bold mb-2">+60%</div>
+              <div className="text-blue-100 text-xs md:text-sm">Højere omsætning</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Category Filter */}
-      <div className="bg-white py-6">
+      <div className="bg-white py-4 md:py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Vælg kategori for at se automatiseringer</h3>
-            <p className="text-sm text-gray-600">Klik på en kategori for at filtrere automatiseringer</p>
+          <div className="text-center mb-4 md:mb-6">
+            <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-2">Vælg kategori for at se automatiseringer</h3>
+            <p className="text-xs md:text-sm text-gray-600">Klik på en kategori for at filtrere automatiseringer</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
             {automationCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm ${
+                className={`flex items-center space-x-1 md:space-x-2 px-3 md:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-xs md:text-sm ${
                   selectedCategory === category.id
                     ? 'bg-blue-600 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -218,39 +218,39 @@ export default function AutomatiseringPage() {
       </div>
 
       {/* Automation Cards */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {filteredAutomations.map((automation) => (
-            <div key={automation.id} className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col">
-              <div className="flex items-start space-x-3 mb-4">
+            <div key={automation.id} className="bg-white rounded-2xl shadow-lg p-4 md:p-6 hover:shadow-xl transition-shadow duration-300 flex flex-col">
+              <div className="flex items-start space-x-3 mb-3 md:mb-4">
                 <div className="flex-shrink-0">
                   {automation.icon}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold text-gray-900 leading-tight">{automation.title}</h3>
-                  <div className="text-sm text-gray-500 mt-1">Automatisering</div>
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 leading-tight">{automation.title}</h3>
+                  <div className="text-xs md:text-sm text-gray-500 mt-1">Automatisering</div>
                 </div>
               </div>
 
-              <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+              <p className="text-gray-600 mb-3 md:mb-4 leading-relaxed text-sm">
                 {automation.description}
               </p>
 
               {/* Value Metrics */}
-              <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-green-50 p-3 rounded-lg">
-                  <div className="text-lg font-bold text-green-600">{automation.timeSaved}</div>
+              <div className="grid grid-cols-2 gap-2 md:gap-3 mb-3 md:mb-4">
+                <div className="bg-green-50 p-2 md:p-3 rounded-lg">
+                  <div className="text-sm md:text-lg font-bold text-green-600">{automation.timeSaved}</div>
                   <div className="text-xs text-green-700">Tid sparet</div>
                 </div>
-                <div className="bg-blue-50 p-3 rounded-lg">
-                  <div className="text-lg font-bold text-blue-600">{automation.revenue}</div>
+                <div className="bg-blue-50 p-2 md:p-3 rounded-lg">
+                  <div className="text-sm md:text-lg font-bold text-blue-600">{automation.revenue}</div>
                   <div className="text-xs text-blue-700">Resultat</div>
                 </div>
               </div>
 
               {/* Features */}
-              <div className="mb-4 flex-1">
-                <h4 className="font-semibold text-gray-900 mb-2 text-sm">Hvad gør det:</h4>
+              <div className="mb-3 md:mb-4 flex-1">
+                <h4 className="font-semibold text-gray-900 mb-2 text-xs md:text-sm">Hvad gør det:</h4>
                 <ul className="space-y-1">
                   {automation.features.map((feature, index) => (
                     <li key={index} className="flex items-start space-x-2 text-xs text-gray-600">
@@ -262,8 +262,8 @@ export default function AutomatiseringPage() {
               </div>
 
               {/* Example */}
-              <div className="bg-gray-50 p-3 rounded-lg">
-                <h4 className="font-semibold text-gray-900 mb-2 text-sm">Eksempel:</h4>
+              <div className="bg-gray-50 p-2 md:p-3 rounded-lg">
+                <h4 className="font-semibold text-gray-900 mb-2 text-xs md:text-sm">Eksempel:</h4>
                 <p className="text-xs text-gray-600 italic leading-relaxed">{automation.example}</p>
               </div>
             </div>
