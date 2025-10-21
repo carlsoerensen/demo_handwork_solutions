@@ -44,6 +44,8 @@ Create a `.env.local` file in the root directory:
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
+**Important**: The `.env.local` file is automatically ignored by git for security. Never commit your actual API keys to the repository.
+
 4. Run the development server:
 ```bash
 npm run dev
@@ -82,8 +84,14 @@ git push -u origin main
 The easiest way to deploy is using Vercel:
 
 1. Connect your GitHub repository to Vercel
-2. Add your OpenAI API key to the environment variables
-3. Deploy automatically
+2. In your Vercel dashboard, go to Settings → Environment Variables
+3. Add the following environment variable:
+   - **Name**: `OPENAI_API_KEY`
+   - **Value**: Your actual OpenAI API key
+   - **Environment**: Production, Preview, Development (select all)
+4. Deploy automatically
+
+**Security Note**: Your API key is now safely stored in Vercel's environment variables and not exposed in your code.
 
 ## Project Structure
 
